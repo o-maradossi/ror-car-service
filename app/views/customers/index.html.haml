@@ -1,0 +1,11 @@
+%h1 Customers
+- if @customers.any?
+  %ul
+    - @customers.each do |customer|
+      %li
+      = link_to "#{customer.first_name} #{customer.last_name}", customer_path(customer)
+      %hr
+- else
+  %h3
+    There are no customers here, unless you are looking to sign up.
+= link_to 'Add a Customer', new_customer_path, class: 'btn'

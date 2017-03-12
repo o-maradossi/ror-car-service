@@ -1,0 +1,17 @@
+%h1 My Dealerships
+- if @dealerships.any?
+  %ul
+    - @dealerships.each do |dealership|
+      %li
+        %h3
+          = link_to dealership.name, dealership_path(dealership)
+        = link_to 'Edit', edit_dealership_path(dealership) 
+        |
+        = link_to 'Delete', dealership_path(dealership), method: :delete
+
+      %hr
+- else
+  %h3
+    No Dealerships Available. Please Add One.
+
+= link_to 'Add New Dealership', new_dealership_path, class: 'btn'

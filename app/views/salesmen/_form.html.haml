@@ -1,0 +1,16 @@
+= form_for @salesman do |f|
+  = f.label :first_name
+  = f.text_field :first_name
+  %br
+  = f.label :last_name
+  = f.text_field :last_name
+  %br
+  = f.label :age
+  = f.number_field :age
+  %br
+  = f.label :license_number
+  = f.number_field :license_number
+  %br
+  = f.hidden_field :dealership_id, :value => params[:dealership_id], required: true
+
+  = f.submit

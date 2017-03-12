@@ -1,0 +1,47 @@
+%h3
+  = @dealership.name
+%h4
+  Address: 
+  = @dealership.address
+%hr
+%h4 Our Salesmen:
+- if @salesmen.any?
+  %ul
+    - @salesmen.each do |salesman|
+      %li
+        Name:
+        = salesman.first_name 
+        = salesman.last_name
+        = link_to 'Edit', edit_salesman_path(salesman)
+        |
+        = link_to 'Delete', salesman_path(salesman), method: :delete
+- else
+  %h5
+    We have no Salesmen. FIND YOUR OWN CAR.
+= link_to 'Add Salesman', new_salesman_path(dealership_id: @dealership), class: 'btn'
+%hr
+%h4 
+  = link_to 'Cars Available:', cars_path(dealership_id: @dealership.id)
+- if @cars.any?
+  %ul
+    - @cars.each do |car|
+      %li
+      Make:
+      = car.make
+      |
+      Model:
+      = car.model
+      |
+      Year:
+      = car.year
+      = link_to 'Edit', edit_car_path(car)
+      |
+      = link_to 'Delete', car_path(car), method: :delete
+      %hr
+- else
+  %h5
+    No Cars Currently Available
+= link_to 'Add Car', new_car_path(dealership_id: @dealership), class: 'btn'
+%hr
+
+= link_to 'Dealerships', dealerships_path, class: 'btn'
